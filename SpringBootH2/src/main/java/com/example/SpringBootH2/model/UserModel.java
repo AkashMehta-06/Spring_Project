@@ -13,7 +13,6 @@ import com.sun.istack.NotNull;
 @Table(name= "User")
 public class UserModel  {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
 	@NotNull

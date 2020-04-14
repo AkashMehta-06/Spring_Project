@@ -48,7 +48,23 @@ public class SpringBootH2ApplicationTests {
 	@Test
 	@Order(1)
     public void createUserTest() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/createUser").contentType(MediaType.APPLICATION_JSON)
+		
+		 mockMvc.perform(MockMvcRequestBuilders.post("/api/user/createUser").contentType(MediaType.APPLICATION_JSON)
+	                .content("{\n" +
+	                		"    \"id\":3,\n" + 
+	                		"    \"createdBy\": 3,\n"+
+	                        "    \"email\": \"aksh@gmail.com\",\n" + 
+	                		"    \"firstName\": \"Aksh\",\n"+ 
+	                        "    \"lastModifiedBy\": 3,\n" + 
+	                		"    \"lastName\": \"Meta\",\n"+
+	                        "    \"status\": \"active\",\n" + 
+	                		"    \"username\": \"Alha\",\n" +  
+	                        "	 \"createdDate\": \"15-05-2019\",\n"+ 
+	                		"    \"lastModifiedDate\":\"18-07-2020\",\n" + "}")
+	                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk())
+	                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+		
+       /* mockMvc.perform(MockMvcRequestBuilders.post("/api/user/createUser").contentType(MediaType.APPLICATION_JSON)
                 .content("{\n" + 
                         "    \"username\": \"Akash\",\n" + 
                         "    \"status\": \"active\",\n" + 
@@ -61,14 +77,14 @@ public class SpringBootH2ApplicationTests {
                         "    \"lastModifiedDate\":\"15-07-2020\",\n" + 
                         "}")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));*/
         
     }
 	
 	@Test
     @Order(2)
     public void getUserByIdTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/user/getUserById/67"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/user/getUserById/1"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
@@ -82,14 +98,14 @@ public class SpringBootH2ApplicationTests {
 	@Test
     @Order(4)
 	public void updateUserByIdTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.put("/api/user/updateUserById/67"))
+		mockMvc.perform(MockMvcRequestBuilders.put("/api/user/updateUserById/1"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
     @Order(5)
 	public void deleteUserByIdTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.delete("/api/user/deleteUserById/68"))
+		mockMvc.perform(MockMvcRequestBuilders.delete("/api/user/deleteUserById/2"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}	
 	
@@ -98,12 +114,13 @@ public class SpringBootH2ApplicationTests {
 	public void createAccountTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/account/createAccount").contentType(MediaType.APPLICATION_JSON)
                 .content("{\n" + 
+                		"    \"id\":3,\n" + 
                         "    \"accountName\": \"Instagram\",\n" + 
-                        "    \"owner\": \"67\",\n" + 
-                        "    \"createdBy\": \"67\",\n" + 
-                        "    \"createdDate\":\"12-01-2020\",\n" + 
-                        "    \"lastModifiedBy\" : \"67\"\n" +
-                        "    \"lastModifiedDate\": \"12-03-2020\",\n" + 
+                        "    \"owner\": 3,\n" + 
+                        "    \"createdBy\": 3,\n" + 
+                        "    \"createdDate\":\"16-01-2020\",\n" + 
+                        "    \"lastModifiedBy\" : 3,\n" +
+                        "    \"lastModifiedDate\": \"13-03-2020\",\n" + 
                         "}")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
@@ -112,14 +129,14 @@ public class SpringBootH2ApplicationTests {
 	@Test
     @Order(7)
 	public void getAccountByIdTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/account/getAccountById/132"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/account/getAccountById/1"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
 	@Test
     @Order(8)
 	public void updateAccountByIdTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.put("/api/account/updateAccountById/132"))
+		mockMvc.perform(MockMvcRequestBuilders.put("/api/account/updateAccountById/1"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
@@ -128,7 +145,7 @@ public class SpringBootH2ApplicationTests {
 	@Test
     @Order(9)
 	public void deleteAccountByIdTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.delete("/api/account/deleteAccountById/132"))
+		mockMvc.perform(MockMvcRequestBuilders.delete("/api/account/deleteAccountById/2"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
